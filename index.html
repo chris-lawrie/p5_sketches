@@ -13,23 +13,26 @@
     }
   </style>
   <script>
-    function loadSketch() {
-      var selectedSketch = document.getElementById("sketchSelector").value;
-      var sketchScript = document.createElement("script");
-      sketchScript.src = "sketches/" + selectedSketch + "/sketch.js";
-      document.head.appendChild(sketchScript);
-    }
+    // function loadSketch() {
+    //   var selectedSketch = document.getElementById("sketchSelector").value;
+    //   var sketchScript = document.createElement("script");
+    //   sketchScript.src = "sketches/" + selectedSketch + "/sketch.js";
+    //   document.head.appendChild(sketchScript);
+    // }
   </script>
 </head>
 <body>
   <!-- TODO: replace title with sketch selected.. -->
   <h1 id="pageTitle">🤠</h1>
   <label for="sketchSelector">Select a Sketch:</label>
-  <select id="sketchSelector" onchange="loadSketch()">
+  <select id="sketchSelector">
     <option value="04_13_2024">04/13/2024</option>
-</select>
+    <option value="04_14_2024">04/14/2024</option>
+
+  </select>
 <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
 <!-- TODO: replace sketch drawn with the one seleced -->
-  <script language="javascript" type="text/javascript" src="sketches/04_13_2024/sketch.js"></script>
+  <script language="javascript" type="text/javascript" src="sketches/04_14_2024/sketch.js"></script>
+  <!-- <script language="javascript" type="text/javascript" src="sketches/04_13_2024/sketch.js"></script> -->
 </body>
 </html>

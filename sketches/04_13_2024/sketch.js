@@ -1,4 +1,5 @@
-// Simple first sketch - ball bouncing around a box!
+// Chris Lawrie | April 13th 2024
+// simply a ball bouncing around a box :)
 
 let x, y;
 let dx = 2;
@@ -27,7 +28,7 @@ function draw() {
     dy *= -1;
   }
 
-  //   Draw square
+  // Draw square
   rect(0, 0, squareSize, squareSize);
 
   // Draw ball
