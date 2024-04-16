@@ -15,7 +15,6 @@ function draw() {
   stroke(200);
   strokeWeight(5);
   square(0, 0, width, 20);
-
   ball.update();
   ball.display();
 }
