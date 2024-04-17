@@ -3,7 +3,7 @@
 
 function setup() {
   createCanvas(400, 400);
-  ball = new Ball(width / 2, 20, 0, 20, width, height, 380);
+  ball = new Ball(100, 200, 0, 20, width, height, 380 / 2);
 }
 
 function draw() {
