@@ -29,8 +29,8 @@ class Ball {
 
     if (dist_to_center + this.ball_radius > this.boundary_radius) {
       this.frame_count = 0;
-      this.velocity.y = -this.velocity.y * Math.sin(this.angle_rad);
-      this.velocity.x = -this.velocity.x * Math.cos(this.angle_rad);
+      this.velocity.y = -this.velocity.mag() * Math.sin(this.angle_rad);
+      this.velocity.x = -this.velocity.mag() * Math.cos(this.angle_rad);
     }
   }
 
