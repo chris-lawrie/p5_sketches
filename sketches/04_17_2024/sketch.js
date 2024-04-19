@@ -1,5 +1,5 @@
-// Chris Lawrie | April 18th 2024
-// Balls are aware that they have collided
+// Chris Lawrie | April 17th 2024
+// Multiple balls bouncing around a cricle!
 
 let balls = [];
 
