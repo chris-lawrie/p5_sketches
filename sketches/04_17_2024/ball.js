@@ -23,7 +23,6 @@ class Ball {
     this.angle_rad = angle(this.position, this.circle_center);
 
     if (dist_to_center + this.ball_radius > this.boundary_radius) {
-      this.frame_count = 0;
       this.velocity.y = -0.99 * this.velocity.mag() * Math.sin(this.angle_rad);
       this.velocity.x = -0.99 * this.velocity.mag() * Math.cos(this.angle_rad);
     }

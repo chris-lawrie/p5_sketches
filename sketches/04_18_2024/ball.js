@@ -17,7 +17,7 @@ class Ball {
 
   update() {
     this.position.add(this.velocity);
-    this.velocity.y += 0.2;
+    this.velocity.y += 0.1;
 
     let dist_to_center = this.position.dist(this.circle_center);
     this.angle_rad = angle(this.position, this.circle_center);
