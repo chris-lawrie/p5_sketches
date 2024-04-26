@@ -9,10 +9,10 @@ function random_color() {
 
 function setup() {
   createCanvas(400, 400);
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 2; i++) {
     let x = random(100, 300);
     let y = random(100, 200);
-    let radius = random(30, 50);
+    let radius = random(40, 40);
     let fill_colour = random_color();
     balls.push(new Ball(x, y, fill_colour, radius, width, height, 380 / 2));
   }
@@ -45,15 +45,9 @@ function draw() {
 
       // assuming perfectly elastic collision
       if (distance <= balls[i].ball_radius + balls[j].ball_radius) {
-        balls[i].fill_colour = random_color();
-        balls[j].fill_colour = random_color();
-
-        // balls[i].velocity.x =
-        //   (balls[i].velocity.x * (balls[i].mass - balls[j].mass)) /
-        //   (balls[i].mass + balls[j].mass);
-        // balls[i].velocity.y = ...;
-        // balls[j].velocity.x = ...;
-        // balls[j].velocity.y = ...;
+        // This is not the correct physics lol 😅
+        balls[i].velocity.x = -balls[i].velocity.x;
+        balls[j].velocity.x = -balls[j].velocity.x;
       }
     }
   }
