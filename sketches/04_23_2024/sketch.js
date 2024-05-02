@@ -9,10 +9,10 @@ function random_color() {
 
 function setup() {
   createCanvas(400, 400);
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < 5; i++) {
     let x = random(100, 300);
     let y = random(100, 200);
-    let radius = random(40, 40);
+    let radius = random(10, 10);
     let fill_colour = random_color();
     balls.push(new Ball(x, y, fill_colour, radius, width, height, 380 / 2));
   }
@@ -48,6 +48,8 @@ function draw() {
         // This is not the correct physics lol 😅
         balls[i].velocity.x = -balls[i].velocity.x;
         balls[j].velocity.x = -balls[j].velocity.x;
+        balls[i].velocity.y = -balls[i].velocity.y;
+        balls[j].velocity.y = -balls[j].velocity.y;
       }
     }
   }
