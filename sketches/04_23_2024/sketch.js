@@ -40,7 +40,7 @@ function draw() {
         balls[i].position.x,
         balls[i].position.y,
         balls[j].position.x,
-        balls[j].position.y
+        balls[j].position.y,
       );
 
       // assuming perfectly elastic collision

@@ -14,7 +14,7 @@ function setup() {
       random(150, 255),
       random(150, 255),
       random(150, 255),
-      200
+      200,
     );
     balls.push(new Ball(x, y, fill_colour, radius, width, height));
   }

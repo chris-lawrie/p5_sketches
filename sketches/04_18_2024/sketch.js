@@ -40,7 +40,7 @@ function draw() {
         balls[i].position.x,
         balls[i].position.y,
         balls[j].position.x,
-        balls[j].position.y
+        balls[j].position.y,
       );
       if (distance <= balls[i].ball_radius + balls[j].ball_radius) {
         balls[i].fill_colour = random_color();
