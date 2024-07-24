@@ -31,25 +31,42 @@ function draw() {
     balls[i].update();
     balls[i].display();
 
-    for (let j = 0; j < balls.length; j++) {
-      // don't check against self & don't check the same comparison twice
-      if (i >= j) {
-        continue;
-      }
+    // don't check against self & don't check the same comparison twice
+    for (let j = i + 1; j < balls.length; j++) {
       distance = dist(
         balls[i].position.x,
         balls[i].position.y,
         balls[j].position.x,
-        balls[j].position.y,
+        balls[j].position.y
       );
 
-      // assuming perfectly elastic collision
       if (distance <= balls[i].ball_radius + balls[j].ball_radius) {
-        // This is not the correct physics lol 😅
-        balls[i].velocity.x = -balls[i].velocity.x;
-        balls[j].velocity.x = -balls[j].velocity.x;
-        balls[i].velocity.y = -balls[i].velocity.y;
-        balls[j].velocity.y = -balls[j].velocity.y;
+        // correct ball positions incase radii overlap
+        let overlap = distance - (balls[i].ball_radius + balls[j].ball_radius);
+        let impact_vector = p5.Vector.sub(balls[j].position, balls[i].position);
+        impact_vector.setMag(distance);
+        let dir = impact_vector.copy();
+        dir.setMag(overlap * 0.5);
+        balls[i].position.add(dir);
+        balls[j].position.sub(dir);
+
+        // calculate new velocities assuming elastic collisions
+        let tot_mass = balls[i].mass + balls[j].mass;
+        let velocity_diff = p5.Vector.sub(
+          balls[j].velocity,
+          balls[i].veclocity
+        );
+
+        let numerator = velocity_diff.dot(impact_vector);
+        let denomenator = tot_mass * distance * distance;
+
+        let delta_velocity_i = impact_vector.copy();
+        delta_velocity_i.mult((2 * balls[j].mass * numerator) / denomenator);
+        balls[i].velocity.add(delta_velocity_i);
+
+        let delta_velocity_j = impact_vector.copy();
+        delta_velocity_j.mult((-2 * balls[i].mass * numerator) / denomenator);
+        balls[j].velocity.add(delta_velocity_j);
       }
     }
   }
