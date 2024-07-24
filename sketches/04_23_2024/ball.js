@@ -1,4 +1,5 @@
 var GRAVITY = 0.2;
+var NOTES = [261.63, 329.63, 392.0]; // Frequencies for C4, E4, and G4
 
 function angle(point_1, point_2) {
   var dx = point_1.x - point_2.x;
@@ -18,10 +19,16 @@ class Ball {
     this.circle_center = createVector(width / 2, height / 2);
     this.boundary_radius = boundary_radius;
     this.angle_rad = 0;
+
+    // Pick a note, and create oscillator to play it
+    this.note = random(NOTES);
+    this.oscillator = new p5.Oscillator("sine");
+    this.oscillator.start();
+    this.oscillator.amp(0);
   }
 
   update() {
-    // this.velocity.y += GRAVITY;
+    this.velocity.y += GRAVITY;
     this.position.add(this.velocity);
 
     let dist_to_center = this.position.dist(this.circle_center);
@@ -37,6 +44,9 @@ class Ball {
       // bounce balls off boundary
       this.velocity.y = -this.velocity.mag() * Math.sin(this.angle_rad);
       this.velocity.x = -this.velocity.mag() * Math.cos(this.angle_rad);
+
+      // Play a musical note upon collision
+      this.playNote();
     }
   }
 
@@ -45,5 +55,11 @@ class Ball {
     stroke(this.fill_colour);
     strokeWeight(0);
     ellipse(this.position.x, this.position.y, this.ball_radius * 2);
+  }
+
+  playNote() {
+    this.oscillator.freq(this.note);
+    this.oscillator.amp(0.5, 0.1);
+    this.oscillator.amp(0, 0.5);
   }
 }
